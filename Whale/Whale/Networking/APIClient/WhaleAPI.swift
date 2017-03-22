@@ -23,7 +23,7 @@ protocol Gettable {
     func get(completionHandler: @escaping (Result<Data>) -> Void)
 }
 
-public protocol Endpoint {
+private protocol Endpoint {
     var path : String {get}
     var method: HTTPMethod {get}
 }
@@ -33,14 +33,6 @@ private protocol APIRequest {
     var baseURL: NSURL {get}
     var headers: [HTTPHeader] {get}
     var query: [String: Any] {get}
-}
-
-public protocol APIResponse {
-    var httpResponse: HTTPURLResponse? {get}
-    var data: NSData? {get}
-    var error: Error? {get}
-    var originalRequest: NSURLRequest? {get}
-    var contentType: String? {get}
 }
 
 public enum Whale {
@@ -55,7 +47,7 @@ public enum Whale {
     case CreateQuestion(recieverId: String, content: String, authToken: String)
 }
 
-public enum HTTPHeader {
+private enum HTTPHeader {
     
     case ContentDisposition(String)
     case Accept([String])
@@ -105,7 +97,7 @@ public enum HTTPHeader {
 }
 
 extension Whale: Endpoint {
-    public var path: String {
+    fileprivate var path: String {
         switch self {
         case .GetAnswers:
             return "api/v1/answers"
@@ -124,7 +116,7 @@ extension Whale: Endpoint {
         }
     }
     
-    public var method: HTTPMethod {
+    fileprivate var method: HTTPMethod {
         switch self {
         case .GetAnswers,
              .GetComments,
