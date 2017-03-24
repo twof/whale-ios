@@ -43,14 +43,14 @@ public enum Whale {
     }
     
     case GetUsers
-    case GetAnswers(perPage: Int, pageNum: Int, authToken: String)
-    case GetQuestions(perPage: Int, pageNum: Int, authToken: String)
-    case GetComments(answerId: Int, perPage: Int, pageNum: Int, authToken: String)
-    case GetLikes(answerId: Int, perPage: Int, pageNum: Int, authToken: String)
+    case GetAnswers(perPage: Int, pageNum: Int)
+    case GetQuestions(perPage: Int, pageNum: Int)
+    case GetComments(answerId: Int, perPage: Int, pageNum: Int)
+    case GetLikes(answerId: Int, perPage: Int, pageNum: Int)
     case LoginUser(username: String, password: String)
     case CreateUser(email: String, firstName: String, lastName: String, password: String, username: String, image: UIImage?)
-    case CreateAnswer(questionId: String, video: String, thumbnail: UIImage, authToken: String)
-    case CreateQuestion(recieverId: String, content: String, authToken: String)
+    case CreateAnswer(questionId: String, video: String, thumbnail: UIImage)
+    case CreateQuestion(recieverId: String, content: String)
 }
 
 private enum HTTPHeader {
@@ -150,13 +150,13 @@ public struct WhaleService: APIRequest, Gettable {
     
     fileprivate var headers: [HTTPHeader] {
         switch endpoint {
-        case .GetAnswers(_, _, let authToken),
-             .GetComments(_, _, _, let authToken),
-             .GetLikes(_, _, _, let authToken),
-             .GetQuestions(_, _, let authToken),
-             .CreateAnswer(_, _, _, let authToken),
-             .CreateQuestion(_, _, let authToken):
-            return [.Authorization(authToken)]
+        case .GetAnswers,
+             .GetComments,
+             .GetLikes,
+             .GetQuestions,
+             .CreateAnswer,
+             .CreateQuestion:
+            return [.Authorization(KeychainSwift().get("authToken")! as String)]
         default:
             return []
         }
@@ -164,14 +164,14 @@ public struct WhaleService: APIRequest, Gettable {
     
     fileprivate var query: [String : Any] {
         switch endpoint {
-        case .GetAnswers(let perPage, let pageNum, _),
-             .GetComments(_, let perPage, let pageNum, _),
-             .GetLikes(_, let perPage, let pageNum, _),
-             .GetQuestions(let perPage, let pageNum, _):
+        case .GetAnswers(let perPage, let pageNum),
+             .GetComments(_, let perPage, let pageNum),
+             .GetLikes(_, let perPage, let pageNum),
+             .GetQuestions(let perPage, let pageNum):
             return ["per_page": perPage, "page": pageNum]
         case .LoginUser(let email, let password):
             return ["email": email, "password": password]
-        case .CreateQuestion(let recieverId, let content, _):
+        case .CreateQuestion(let recieverId, let content):
             return ["receiver_id": recieverId, "content": content]
         case .CreateUser(let email, let firstName, let lastName, let password, let username, _):
             return ["email": email, "first_name": firstName, "last_name": lastName, "password": password, "username": username] //TODO: Add file

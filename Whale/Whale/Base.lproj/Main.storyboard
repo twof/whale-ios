@@ -49,11 +49,30 @@
                     <connections>
                         <outlet property="emailTextField" destination="Nxd-FX-nsA" id="qbl-hV-S8t"/>
                         <outlet property="passwordTextField" destination="pIH-UE-S6L" id="Pa4-Lq-ZyI"/>
+                        <segue destination="tt0-ou-BhT" kind="show" id="JhC-L5-Erk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ytZ-VC-V95" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-178" y="149"/>
+        </scene>
+        <!--Main View Controller-->
+        <scene sceneID="pnD-S3-2Eu">
+            <objects>
+                <viewController storyboardIdentifier="mainViewController" id="tt0-ou-BhT" customClass="MainViewController" customModule="Whale" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4F6-lK-DgP"/>
+                        <viewControllerLayoutGuide type="bottom" id="oNl-Qv-6xA"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Bua-pN-1Ud">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nM0-b3-SRG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="702" y="149"/>
         </scene>
     </scenes>
 </document>

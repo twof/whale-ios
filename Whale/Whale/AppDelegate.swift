@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import KeychainSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +17,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        let keyChain = KeychainSwift()
+        
+        if keyChain.get("authToken") != nil {
+            let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
+            let mainViewController = mainStoryBoard.instantiateViewController(withIdentifier: "mainViewController") as! MainViewController
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            appDelegate.window?.rootViewController = mainViewController
+        }
+        
         return true
     }
 
