@@ -39,10 +39,17 @@
                                 <rect key="frame" x="164" y="288" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Login"/>
+                                <connections>
+                                    <action selector="login:" destination="BQC-uV-KFw" eventType="touchUpInside" id="OeB-B1-4DF"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="emailTextField" destination="Nxd-FX-nsA" id="qbl-hV-S8t"/>
+                        <outlet property="passwordTextField" destination="pIH-UE-S6L" id="Pa4-Lq-ZyI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ytZ-VC-V95" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

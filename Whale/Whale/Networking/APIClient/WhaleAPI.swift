@@ -9,6 +9,7 @@
 import Foundation
 import Alamofire
 import ObjectMapper
+import KeychainSwift
 
 let apiKey = "56beeef0c5e34b939e93ac369ff28438"
 
@@ -33,9 +34,14 @@ private protocol APIRequest {
     var baseURL: NSURL {get}
     var headers: [HTTPHeader] {get}
     var query: [String: Any] {get}
+    var retType: Mappable.Type {get}
 }
 
 public enum Whale {
+    private var token: String? {
+        return KeychainSwift().get("authToken")
+    }
+    
     case GetUsers
     case GetAnswers(perPage: Int, pageNum: Int, authToken: String)
     case GetQuestions(perPage: Int, pageNum: Int, authToken: String)
@@ -163,8 +169,8 @@ public struct WhaleService: APIRequest, Gettable {
              .GetLikes(_, let perPage, let pageNum, _),
              .GetQuestions(let perPage, let pageNum, _):
             return ["per_page": perPage, "page": pageNum]
-        case .LoginUser(let username, let password):
-            return ["username": username, "password": password]
+        case .LoginUser(let email, let password):
+            return ["email": email, "password": password]
         case .CreateQuestion(let recieverId, let content, _):
             return ["receiver_id": recieverId, "content": content]
         case .CreateUser(let email, let firstName, let lastName, let password, let username, _):
@@ -173,6 +179,29 @@ public struct WhaleService: APIRequest, Gettable {
             return [:]
         default:
             return [:]
+        }
+    }
+    
+    fileprivate var retType: Mappable.Type {
+        switch endpoint {
+        case .GetAnswers:
+            return Answer.self
+        case .GetComments:
+            return Comment.self
+        case .GetLikes:
+            return Like.self
+        case .GetQuestions:
+            return Question.self
+        case .GetUsers:
+            return User.self
+        case .LoginUser:
+            return User.self
+        case .CreateQuestion:
+            return Question.self
+        case .CreateUser:
+            return User.self
+        case .CreateAnswer: //TODO: fix answer
+            return Answer.self
         }
     }
     
@@ -192,13 +221,31 @@ public struct WhaleService: APIRequest, Gettable {
             return ret
         }
         
-        Alamofire.request(self.url, method: self.endpoint.method, parameters: self.query, encoding: URLEncoding.default, headers: head).validate().responseJSON { response in
+        Alamofire.request(self.url, method: self.endpoint.method, parameters: self.query, encoding: URLEncoding.default, headers: head).validate().responseString { response in
+            
             switch response.result {
             case .failure(let error):
                 completionHandler(Result.Failure(error))
             case .success(let json):
-                print(json)
-                //completionHandler(Result.Success(User(JSONString: json)))
+                switch self.endpoint{
+                case .LoginUser:
+                    guard let token = response.response?.allHeaderFields["Authorization"] as? String else{
+                        print("There is no token wtf?")
+                        break
+                    }
+                    
+                    let keychain = KeychainSwift()
+                    keychain.set(token, forKey: "authToken")
+                default:
+                    break
+                }
+                
+                guard let obj = self.retType.init(JSONString: json) else {
+                    print("something went wrong with optional chaining when returning the object")
+                    break
+                }
+                
+                completionHandler(Result.Success(obj))
             }
         }
     }
