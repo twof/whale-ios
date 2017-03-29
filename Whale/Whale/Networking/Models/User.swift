@@ -18,9 +18,10 @@ public class User: Mappable {
     var followingCount: Int?
     var id: Int!
     var imageURL: URL!
+    var nextUser: User?
+    private var uList: [User]?
     
     required public init?(map: Map) {}
-    
     
     public func mapping(map: Map) {
         email <- map["email"]
@@ -31,5 +32,30 @@ public class User: Mappable {
         followingCount <- map["following_count"]
         id <- map["id"]
         imageURL <- (map["image_url"], URLTransform())
+        
+        if map["data"].isKeyPresent {
+            uList <- map["data"]
+            
+            email <- map["data.0.email"]
+            username <- map["data.0.username"]
+            firstName <- map["data.0.first_name"]
+            lastName <- map["data.0.last_name"]
+            followerCount <- map["data.0.follower_count"]
+            followingCount <- map["data.0.following_count"]
+            id <- map["data.0.id"]
+            imageURL <- (map["data.0.image_url"], URLTransform())
+            
+            var currentUser = self
+            
+            if let uList = uList{
+                for i in 1..<uList.count{
+                    currentUser.nextUser = uList[i]
+                    currentUser = currentUser.nextUser!
+                }
+            }
+        }
+        
+        
+        
     }
 }

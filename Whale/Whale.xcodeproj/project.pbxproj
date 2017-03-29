@@ -7,13 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		242BA6FB1E89840500694114 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242BA6FA1E89840500694114 /* CreateAccountViewController.swift */; };
+		244AB15C1E8C3DF700E4F665 /* QuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244AB15B1E8C3DF700E4F665 /* QuestionCell.swift */; };
 		246453271E831C2D00ADCD85 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246453261E831C2D00ADCD85 /* User.swift */; };
 		246453291E831DF200ADCD85 /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246453281E831DF200ADCD85 /* Answer.swift */; };
 		2464532B1E831E3D00ADCD85 /* Like.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2464532A1E831E3D00ADCD85 /* Like.swift */; };
 		2464532D1E831E5500ADCD85 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2464532C1E831E5500ADCD85 /* Comment.swift */; };
 		2464532F1E831E6D00ADCD85 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2464532E1E831E6D00ADCD85 /* Question.swift */; };
 		246453311E8338B300ADCD85 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246453301E8338B300ADCD85 /* LoginViewController.swift */; };
-		246453331E85A7B700ADCD85 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246453321E85A7B700ADCD85 /* MainViewController.swift */; };
+		246453351E85AA0100ADCD85 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246453341E85AA0100ADCD85 /* MainViewController.swift */; };
+		246453371E85AA4900ADCD85 /* AnswerTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246453361E85AA4900ADCD85 /* AnswerTabViewController.swift */; };
+		246453391E85AA9300ADCD85 /* QuestionsTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246453381E85AA9300ADCD85 /* QuestionsTabViewController.swift */; };
+		2464533B1E85AAAD00ADCD85 /* ProfileTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2464533A1E85AAAD00ADCD85 /* ProfileTabViewController.swift */; };
 		24751F541E8048B3007857A2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24751F531E8048B3007857A2 /* AppDelegate.swift */; };
 		24751F591E8048B3007857A2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24751F571E8048B3007857A2 /* Main.storyboard */; };
 		24751F5B1E8048B4007857A2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24751F5A1E8048B4007857A2 /* Assets.xcassets */; };
@@ -23,13 +28,18 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		242BA6FA1E89840500694114 /* CreateAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
+		244AB15B1E8C3DF700E4F665 /* QuestionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionCell.swift; sourceTree = "<group>"; };
 		246453261E831C2D00ADCD85 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		246453281E831DF200ADCD85 /* Answer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
 		2464532A1E831E3D00ADCD85 /* Like.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Like.swift; sourceTree = "<group>"; };
 		2464532C1E831E5500ADCD85 /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		2464532E1E831E6D00ADCD85 /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		246453301E8338B300ADCD85 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		246453321E85A7B700ADCD85 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		246453341E85AA0100ADCD85 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		246453361E85AA4900ADCD85 /* AnswerTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerTabViewController.swift; sourceTree = "<group>"; };
+		246453381E85AA9300ADCD85 /* QuestionsTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionsTabViewController.swift; sourceTree = "<group>"; };
+		2464533A1E85AAAD00ADCD85 /* ProfileTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTabViewController.swift; sourceTree = "<group>"; };
 		24751F501E8048B3007857A2 /* Whale.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Whale.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		24751F531E8048B3007857A2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		24751F581E8048B3007857A2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -107,6 +117,7 @@
 		24751F661E804983007857A2 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				244AB15B1E8C3DF700E4F665 /* QuestionCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -115,7 +126,11 @@
 			isa = PBXGroup;
 			children = (
 				246453301E8338B300ADCD85 /* LoginViewController.swift */,
-				246453321E85A7B700ADCD85 /* MainViewController.swift */,
+				246453341E85AA0100ADCD85 /* MainViewController.swift */,
+				246453361E85AA4900ADCD85 /* AnswerTabViewController.swift */,
+				246453381E85AA9300ADCD85 /* QuestionsTabViewController.swift */,
+				2464533A1E85AAAD00ADCD85 /* ProfileTabViewController.swift */,
+				242BA6FA1E89840500694114 /* CreateAccountViewController.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -299,10 +314,15 @@
 				24751F6E1E804F62007857A2 /* WhaleAPI.swift in Sources */,
 				2464532D1E831E5500ADCD85 /* Comment.swift in Sources */,
 				24751F541E8048B3007857A2 /* AppDelegate.swift in Sources */,
+				244AB15C1E8C3DF700E4F665 /* QuestionCell.swift in Sources */,
 				246453271E831C2D00ADCD85 /* User.swift in Sources */,
+				246453371E85AA4900ADCD85 /* AnswerTabViewController.swift in Sources */,
+				242BA6FB1E89840500694114 /* CreateAccountViewController.swift in Sources */,
 				246453311E8338B300ADCD85 /* LoginViewController.swift in Sources */,
 				246453291E831DF200ADCD85 /* Answer.swift in Sources */,
-				246453331E85A7B700ADCD85 /* MainViewController.swift in Sources */,
+				246453391E85AA9300ADCD85 /* QuestionsTabViewController.swift in Sources */,
+				2464533B1E85AAAD00ADCD85 /* ProfileTabViewController.swift in Sources */,
+				246453351E85AA0100ADCD85 /* MainViewController.swift in Sources */,
 				2464532F1E831E6D00ADCD85 /* Question.swift in Sources */,
 				2464532B1E831E3D00ADCD85 /* Like.swift in Sources */,
 			);

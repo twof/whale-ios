@@ -1,5 +1,5 @@
 //
-//  MainViewController.swift
+//  ProfileTabViewController.swift
 //  Whale
 //
 //  Created by fnord on 3/24/17.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainViewController: UITabBarController {
+class ProfileTabViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

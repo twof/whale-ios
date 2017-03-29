@@ -1,5 +1,5 @@
 //
-//  MainViewController.swift
+//  AnswerTabViewController.swift
 //  Whale
 //
 //  Created by fnord on 3/24/17.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainViewController: UITabBarController {
+class AnswerTabViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -11,18 +11,16 @@ import KeychainSwift
 
 class LoginViewController: UIViewController {
 
+    @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     @IBAction func login(_ sender: Any) {
@@ -36,12 +34,14 @@ class LoginViewController: UIViewController {
         
         let loginService = WhaleService(endpoint: Whale.LoginUser(username: email, password: password))
         
-        loginService.get { (result) in
+        loginService.get {(result) in
             switch result{
             case .Failure(let error):
                 print(error)
-            case .Success(let data):
-                print(data)
+                self.errorLabel.text = "Incorrect username or password"
+            case .Success(let user):
+                print(user)
+                self.performSegue(withIdentifier: "toMainFromLogin", sender: self)
             }
         }
     }

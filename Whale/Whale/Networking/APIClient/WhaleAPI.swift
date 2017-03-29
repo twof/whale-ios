@@ -24,6 +24,12 @@ protocol Gettable {
     func get(completionHandler: @escaping (Result<Data>) -> Void)
 }
 
+protocol Postable {
+    associatedtype Data
+    
+    func post(completionHandler: @escaping (Result<Data>) -> Void)
+}
+
 private protocol Endpoint {
     var path : String {get}
     var method: HTTPMethod {get}
@@ -96,10 +102,6 @@ private enum HTTPHeader {
             return value
         }
     }
-    
-    func setRequestHeader(request: NSMutableURLRequest) {
-        request.setValue(requestHeaderValue, forHTTPHeaderField: key)
-    }
 }
 
 extension Whale: Endpoint {
@@ -109,7 +111,7 @@ extension Whale: Endpoint {
             return "api/v1/answers"
         case .GetComments(let answerId):
             return "api/v1/answers/\(answerId)/comments"
-        case .GetUsers,.CreateUser:
+        case .GetUsers, .CreateUser:
             return "api/v1/users"
         case .GetQuestions, .CreateQuestion:
             return "api/v1/questions"
@@ -214,6 +216,12 @@ public struct WhaleService: APIRequest, Gettable {
         self.endpoint = endpoint
     }
     
+//    public func asURLRequest() throws -> URLRequest {
+//        let url = self.url
+//        
+//        r
+//    }
+    
     internal func get(completionHandler: @escaping (Result<Mappable>) -> Void) {
         let head = self.headers.map {($0.key, $0.requestHeaderValue)}.reduce([String: String]()) { (acc, kv)in
             var ret = acc
@@ -228,7 +236,7 @@ public struct WhaleService: APIRequest, Gettable {
                 completionHandler(Result.Failure(error))
             case .success(let json):
                 switch self.endpoint{
-                case .LoginUser:
+                case .LoginUser, .CreateUser:
                     guard let token = response.response?.allHeaderFields["Authorization"] as? String else{
                         print("There is no token wtf?")
                         break
@@ -239,6 +247,7 @@ public struct WhaleService: APIRequest, Gettable {
                 default:
                     break
                 }
+                
                 
                 guard let obj = self.retType.init(JSONString: json) else {
                     print("something went wrong with optional chaining when returning the object")

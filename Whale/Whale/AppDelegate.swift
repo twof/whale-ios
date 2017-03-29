@@ -23,8 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if keyChain.get("authToken") != nil {
             let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
             let mainViewController = mainStoryBoard.instantiateViewController(withIdentifier: "mainViewController") as! MainViewController
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            appDelegate.window?.rootViewController = mainViewController
+            self.window?.rootViewController = mainViewController
         }
         
         return true
