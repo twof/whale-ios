@@ -40,8 +40,8 @@ class AnswersViewModel {
                 }
                 
                 while currentAnswer != nil {
-                    self.questions.append(currentAnswer!)
-                    currentQuestion = currentAnswer?.nextQuestion
+                    self.answers.append(currentAnswer!)
+                    currentAnswer = currentAnswer?.nextAnswer
                 }
                 
                 self.page += 1
