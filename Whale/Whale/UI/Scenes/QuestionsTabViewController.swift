@@ -11,41 +11,49 @@ import UIKit
 class QuestionsTabViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
     
+    var questionsViewModel: QuestionsViewModel!
     
-    var questions = [Question]()
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.delegate = self
         tableView.dataSource = self
-                
-        WhaleService(endpoint: Whale.GetQuestions(perPage: 10, pageNum: 1)).get { (result) in
-            switch result{
-            case .Failure(let error):
-                print(error)
-            case .Success(let question):
-                var currentQuestion = question as? Question
-               
-                while currentQuestion != nil {
-                    self.questions.append(currentQuestion!)
-                    currentQuestion = currentQuestion?.nextQuestion
-                }
-                
+        
+        questionsViewModel = QuestionsViewModel(completion: { (areNewQuestions) in
+            switch areNewQuestions {
+            case true:
                 self.tableView.reloadData()
+            case false:
+                break
             }
-        }
+        })
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.questions.count
+        return self.questionsViewModel.questions.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "questionCell") as! QuestionCell
         
-        cell.setupCell(question: self.questions[indexPath.row])
+        cell.setupCell(question: self.questionsViewModel.questions[indexPath.row])
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let lastElement = questionsViewModel.questions.count - 1
+       
+        if indexPath.row == lastElement && !self.questionsViewModel.isLoading {
+            self.questionsViewModel.nextPage(completion: { (areNewQuestions) in
+                switch areNewQuestions {
+                case true:
+                    self.tableView.reloadData()
+                case false:
+                    break
+                }
+            })
+        }
     }
 
     override func didReceiveMemoryWarning() {

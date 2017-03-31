@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		242BA6FB1E89840500694114 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242BA6FA1E89840500694114 /* CreateAccountViewController.swift */; };
 		244AB15C1E8C3DF700E4F665 /* QuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244AB15B1E8C3DF700E4F665 /* QuestionCell.swift */; };
+		244AB15F1E8EC9B500E4F665 /* QuestionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244AB15E1E8EC9B500E4F665 /* QuestionsViewModel.swift */; };
 		246453271E831C2D00ADCD85 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246453261E831C2D00ADCD85 /* User.swift */; };
 		246453291E831DF200ADCD85 /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246453281E831DF200ADCD85 /* Answer.swift */; };
 		2464532B1E831E3D00ADCD85 /* Like.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2464532A1E831E3D00ADCD85 /* Like.swift */; };
@@ -30,6 +31,7 @@
 /* Begin PBXFileReference section */
 		242BA6FA1E89840500694114 /* CreateAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		244AB15B1E8C3DF700E4F665 /* QuestionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionCell.swift; sourceTree = "<group>"; };
+		244AB15E1E8EC9B500E4F665 /* QuestionsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionsViewModel.swift; sourceTree = "<group>"; };
 		246453261E831C2D00ADCD85 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		246453281E831DF200ADCD85 /* Answer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
 		2464532A1E831E3D00ADCD85 /* Like.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Like.swift; sourceTree = "<group>"; };
@@ -73,6 +75,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		244AB15D1E8EC99A00E4F665 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				244AB15E1E8EC9B500E4F665 /* QuestionsViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		24751F471E8048B3007857A2 = {
 			isa = PBXGroup;
 			children = (
@@ -107,6 +117,7 @@
 		24751F651E804983007857A2 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				244AB15D1E8EC99A00E4F665 /* ViewModels */,
 				24751F661E804983007857A2 /* Cells */,
 				24751F671E804983007857A2 /* Scenes */,
 				24751F681E804983007857A2 /* Storyboards */,
@@ -318,6 +329,7 @@
 				246453271E831C2D00ADCD85 /* User.swift in Sources */,
 				246453371E85AA4900ADCD85 /* AnswerTabViewController.swift in Sources */,
 				242BA6FB1E89840500694114 /* CreateAccountViewController.swift in Sources */,
+				244AB15F1E8EC9B500E4F665 /* QuestionsViewModel.swift in Sources */,
 				246453311E8338B300ADCD85 /* LoginViewController.swift in Sources */,
 				246453291E831DF200ADCD85 /* Answer.swift in Sources */,
 				246453391E85AA9300ADCD85 /* QuestionsTabViewController.swift in Sources */,

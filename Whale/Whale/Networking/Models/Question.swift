@@ -35,8 +35,8 @@ public class Question: Mappable {
             
             var currentQuestion = self
             
-            if let qList = qList {
-                for i in 1..<qList.count{
+            if let qList = qList, qList.count > 0 {
+                for i in 1..<qList.count {
                     currentQuestion.nextQuestion = qList[i]
                     currentQuestion = currentQuestion.nextQuestion!
                 }
@@ -44,28 +44,3 @@ public class Question: Mappable {
         }
     }
 }
-
-
-/*
- data": [
- {
- "sender": {
- "username": "jessica_garnet",
- "last_name": "Garnet",
- "image_url": "https://placehold.it/100x100",
- "id": 6,
- "first_name": "Jessica",
- "email": "jessica@mail.com"
- },
- "receiver": {
- "username": "Brody",
- "last_name": "Stafford",
- "image_url": "https://whale-bucket.s3.amazonaws.com/users/avatars/janna_stafford_lashawnda.koester@for-president.com/55_thumb.jpg?v=63657283258",
- "id": 24,
- "first_name": "Janna",
- "email": "lashawnda.koester@for-president.com"
- },
- "id": 19,
- "content": "What books have changed your life the most?"
- }
- */
