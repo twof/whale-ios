@@ -23,15 +23,15 @@ class QuestionsViewModel {
     
     func nextPage(completion: @escaping (Bool) -> ()){
         self.isLoading = true
-       
+        
         WhaleService(endpoint: Whale.GetQuestions(perPage: self.perPage, pageNum: self.page)).get { (result) in
             
             switch result {
-            case Result.Failure(let error):
+            case .Failure(let error):
                 print(error)
                 self.isLoading = false
                 completion(false)
-            case Result.Success(let newQuestion):
+            case .Success(let newQuestion):
                 var currentQuestion = newQuestion as? Question
                 
                 if currentQuestion?.id == nil {

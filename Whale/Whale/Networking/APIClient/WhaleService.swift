@@ -6,34 +6,11 @@
 //  Copyright © 2017 twof. All rights reserved.
 //
 
-import Foundation
 import Alamofire
 import ObjectMapper
 import KeychainSwift
 
 let apiKey = "56beeef0c5e34b939e93ac369ff28438"
-
-enum Result<T> {
-    case Success(T)
-    case Failure(Error)
-}
-
-protocol Gettable {
-    associatedtype Data
-    
-    func get(completionHandler: @escaping (Result<Data>) -> Void)
-}
-
-protocol Postable {
-    associatedtype Data
-    
-    func post(completionHandler: @escaping (Result<Data>) -> Void)
-}
-
-private protocol Endpoint {
-    var path : String {get}
-    var method: HTTPMethod {get}
-}
 
 private protocol APIRequest {
     var endpoint: Whale {get}
@@ -41,6 +18,11 @@ private protocol APIRequest {
     var headers: [HTTPHeader] {get}
     var query: [String: Any] {get}
     var retType: Mappable.Type {get}
+}
+
+private protocol Endpoint {
+    var path : String {get}
+    var method: HTTPMethod {get}
 }
 
 public enum Whale {
@@ -57,51 +39,6 @@ public enum Whale {
     case CreateUser(email: String, firstName: String, lastName: String, password: String, username: String, image: UIImage?)
     case CreateAnswer(questionId: String, video: String, thumbnail: UIImage)
     case CreateQuestion(recieverId: String, content: String)
-}
-
-private enum HTTPHeader {
-    
-    case ContentDisposition(String)
-    case Accept([String])
-    case ContentType(String)
-    case Authorization(String)
-    case ContentLength(String)
-    case Custom(String, String)
-    
-    
-    var key: String {
-        switch self {
-        case .ContentDisposition:
-            return "Content-Disposition"
-        case .Accept:
-            return "Accept"
-        case .ContentType:
-            return "Content-Type"
-        case .Authorization:
-            return "Authorization"
-        case .ContentLength:
-            return "Content-Length"
-        case .Custom(let key, _):
-            return key
-        }
-    }
-    
-    var requestHeaderValue: String {
-        switch self {
-        case .ContentDisposition(let disposition):
-            return disposition
-        case .Accept(let types):
-            return types.joined(separator: ", ")
-        case .ContentType(let type):
-            return type
-        case .Authorization(let token):
-            return token
-        case .ContentLength(let length):
-            return length
-        case .Custom(_, let value):
-            return value
-        }
-    }
 }
 
 extension Whale: Endpoint {
@@ -142,7 +79,6 @@ extension Whale: Endpoint {
 }
 
 public struct WhaleService: APIRequest, Gettable {
-    typealias Data = Mappable
 
     fileprivate let endpoint: Whale
     
@@ -222,7 +158,9 @@ public struct WhaleService: APIRequest, Gettable {
 //        r
 //    }
     
-    internal func get(completionHandler: @escaping (Result<Mappable>) -> Void) {
+    public typealias Data = Mappable
+    
+    public func get(completionHandler: @escaping (Result<Mappable>) -> Void) {
         let head = self.headers.map {($0.key, $0.requestHeaderValue)}.reduce([String: String]()) { (acc, kv)in
             var ret = acc
             ret[kv.0] = kv.1
@@ -257,25 +195,5 @@ public struct WhaleService: APIRequest, Gettable {
                 completionHandler(Result.Success(obj))
             }
         }
-    }
-}
-
-extension Dictionary {
-    
-    /// Build string representation of HTTP parameter dictionary of keys and objects
-    ///
-    /// This percent escapes in compliance with RFC 3986
-    ///
-    /// http://www.ietf.org/rfc/rfc3986.txt
-    ///
-    /// :returns: String representation in the form of key1=value1&key2=value2 where the keys and values are percent escaped
-    
-    func stringFromHttpParameters() -> String {
-        let parameterArray = self.map { (key, value) -> String in
-            let percentEscapedKey = (key as! String).addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
-            let percentEscapedValue = (value as! String).addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
-            return "\(percentEscapedKey)=\(percentEscapedValue)"
-        }
-        return parameterArray.joined(separator: "&")
     }
 }

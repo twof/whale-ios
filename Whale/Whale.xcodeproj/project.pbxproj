@@ -10,6 +10,10 @@
 		242BA6FB1E89840500694114 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242BA6FA1E89840500694114 /* CreateAccountViewController.swift */; };
 		244AB15C1E8C3DF700E4F665 /* QuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244AB15B1E8C3DF700E4F665 /* QuestionCell.swift */; };
 		244AB15F1E8EC9B500E4F665 /* QuestionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244AB15E1E8EC9B500E4F665 /* QuestionsViewModel.swift */; };
+		244AB1681E8EEF3300E4F665 /* HTTPHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244AB1671E8EEF3300E4F665 /* HTTPHeader.swift */; };
+		244AB16B1E8EF33D00E4F665 /* Gettable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244AB16A1E8EF33D00E4F665 /* Gettable.swift */; };
+		244AB1771E8EF7E700E4F665 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244AB1761E8EF7E700E4F665 /* Dictionary.swift */; };
+		244AB1791E8EFAE100E4F665 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244AB1781E8EFAE100E4F665 /* Result.swift */; };
 		246453271E831C2D00ADCD85 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246453261E831C2D00ADCD85 /* User.swift */; };
 		246453291E831DF200ADCD85 /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246453281E831DF200ADCD85 /* Answer.swift */; };
 		2464532B1E831E3D00ADCD85 /* Like.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2464532A1E831E3D00ADCD85 /* Like.swift */; };
@@ -24,7 +28,7 @@
 		24751F591E8048B3007857A2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24751F571E8048B3007857A2 /* Main.storyboard */; };
 		24751F5B1E8048B4007857A2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24751F5A1E8048B4007857A2 /* Assets.xcassets */; };
 		24751F5E1E8048B4007857A2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24751F5C1E8048B4007857A2 /* LaunchScreen.storyboard */; };
-		24751F6E1E804F62007857A2 /* WhaleAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24751F6D1E804F62007857A2 /* WhaleAPI.swift */; };
+		24751F6E1E804F62007857A2 /* WhaleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24751F6D1E804F62007857A2 /* WhaleService.swift */; };
 		F38A6FC35B4DECDD040D9E32 /* Pods_Whale.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED3CCF3E7422975C99442E9C /* Pods_Whale.framework */; };
 /* End PBXBuildFile section */
 
@@ -32,6 +36,10 @@
 		242BA6FA1E89840500694114 /* CreateAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		244AB15B1E8C3DF700E4F665 /* QuestionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionCell.swift; sourceTree = "<group>"; };
 		244AB15E1E8EC9B500E4F665 /* QuestionsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionsViewModel.swift; sourceTree = "<group>"; };
+		244AB1671E8EEF3300E4F665 /* HTTPHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HTTPHeader.swift; path = ../APIClient/HTTPHeader.swift; sourceTree = "<group>"; };
+		244AB16A1E8EF33D00E4F665 /* Gettable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gettable.swift; sourceTree = "<group>"; };
+		244AB1761E8EF7E700E4F665 /* Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
+		244AB1781E8EFAE100E4F665 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		246453261E831C2D00ADCD85 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		246453281E831DF200ADCD85 /* Answer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
 		2464532A1E831E3D00ADCD85 /* Like.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Like.swift; sourceTree = "<group>"; };
@@ -48,7 +56,7 @@
 		24751F5A1E8048B4007857A2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		24751F5D1E8048B4007857A2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		24751F5F1E8048B4007857A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		24751F6D1E804F62007857A2 /* WhaleAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WhaleAPI.swift; path = ../APIClient/WhaleAPI.swift; sourceTree = "<group>"; };
+		24751F6D1E804F62007857A2 /* WhaleService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhaleService.swift; sourceTree = "<group>"; };
 		4B69FD05430EC7E2A7A8425D /* Pods-Whale.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Whale.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Whale/Pods-Whale.debug.xcconfig"; sourceTree = "<group>"; };
 		737C648810AB66484E6E5870 /* Pods-Whale.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Whale.release.xcconfig"; path = "Pods/Target Support Files/Pods-Whale/Pods-Whale.release.xcconfig"; sourceTree = "<group>"; };
 		ED3CCF3E7422975C99442E9C /* Pods_Whale.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Whale.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -83,6 +91,23 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
+		244AB1601E8EEE3800E4F665 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				244AB16A1E8EF33D00E4F665 /* Gettable.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		244AB1691E8EEF4900E4F665 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				244AB1671E8EEF3300E4F665 /* HTTPHeader.swift */,
+				244AB1781E8EFAE100E4F665 /* Result.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		24751F471E8048B3007857A2 = {
 			isa = PBXGroup;
 			children = (
@@ -104,6 +129,7 @@
 		24751F521E8048B3007857A2 /* Whale */ = {
 			isa = PBXGroup;
 			children = (
+				244AB1601E8EEE3800E4F665 /* Protocols */,
 				24751F6C1E8049A8007857A2 /* Extensions */,
 				24751F691E804999007857A2 /* Networking */,
 				24751F651E804983007857A2 /* UI */,
@@ -158,6 +184,7 @@
 		24751F691E804999007857A2 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				244AB1691E8EEF4900E4F665 /* Helpers */,
 				24751F6A1E804999007857A2 /* APIClient */,
 				24751F6B1E804999007857A2 /* Models */,
 			);
@@ -167,6 +194,7 @@
 		24751F6A1E804999007857A2 /* APIClient */ = {
 			isa = PBXGroup;
 			children = (
+				24751F6D1E804F62007857A2 /* WhaleService.swift */,
 			);
 			path = APIClient;
 			sourceTree = "<group>";
@@ -174,7 +202,6 @@
 		24751F6B1E804999007857A2 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				24751F6D1E804F62007857A2 /* WhaleAPI.swift */,
 				246453261E831C2D00ADCD85 /* User.swift */,
 				246453281E831DF200ADCD85 /* Answer.swift */,
 				2464532A1E831E3D00ADCD85 /* Like.swift */,
@@ -187,6 +214,7 @@
 		24751F6C1E8049A8007857A2 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				244AB1761E8EF7E700E4F665 /* Dictionary.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -322,7 +350,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				24751F6E1E804F62007857A2 /* WhaleAPI.swift in Sources */,
+				244AB1681E8EEF3300E4F665 /* HTTPHeader.swift in Sources */,
+				24751F6E1E804F62007857A2 /* WhaleService.swift in Sources */,
+				244AB1791E8EFAE100E4F665 /* Result.swift in Sources */,
 				2464532D1E831E5500ADCD85 /* Comment.swift in Sources */,
 				24751F541E8048B3007857A2 /* AppDelegate.swift in Sources */,
 				244AB15C1E8C3DF700E4F665 /* QuestionCell.swift in Sources */,
@@ -331,6 +361,8 @@
 				242BA6FB1E89840500694114 /* CreateAccountViewController.swift in Sources */,
 				244AB15F1E8EC9B500E4F665 /* QuestionsViewModel.swift in Sources */,
 				246453311E8338B300ADCD85 /* LoginViewController.swift in Sources */,
+				244AB1771E8EF7E700E4F665 /* Dictionary.swift in Sources */,
+				244AB16B1E8EF33D00E4F665 /* Gettable.swift in Sources */,
 				246453291E831DF200ADCD85 /* Answer.swift in Sources */,
 				246453391E85AA9300ADCD85 /* QuestionsTabViewController.swift in Sources */,
 				2464533B1E85AAAD00ADCD85 /* ProfileTabViewController.swift in Sources */,
