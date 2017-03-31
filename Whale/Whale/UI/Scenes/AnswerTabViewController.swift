@@ -33,3 +33,12 @@ class AnswerTabViewController: UIViewController {
     */
 
 }
+
+
+extension AnswerTabViewController: UITableViewDelegate {
+    
+}
+
+extension AnswerTabViewController: UITableViewDataSource {
+    
+}

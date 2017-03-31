@@ -8,7 +8,7 @@
 
 import UIKit
 
-class QuestionsTabViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class QuestionsTabViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var questionsViewModel: QuestionsViewModel!
@@ -29,33 +29,6 @@ class QuestionsTabViewController: UIViewController, UITableViewDelegate, UITable
         })
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.questionsViewModel.questions.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "questionCell") as! QuestionCell
-        
-        cell.setupCell(question: self.questionsViewModel.questions[indexPath.row])
-        
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let lastElement = questionsViewModel.questions.count - 1
-       
-        if indexPath.row == lastElement && !self.questionsViewModel.isLoading {
-            self.questionsViewModel.nextPage(completion: { (areNewQuestions) in
-                switch areNewQuestions {
-                case true:
-                    self.tableView.reloadData()
-                case false:
-                    break
-                }
-            })
-        }
-    }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -68,5 +41,36 @@ class QuestionsTabViewController: UIViewController, UITableViewDelegate, UITable
      
     }
     */
-
 }
+
+extension QuestionsTabViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let lastElement = questionsViewModel.questions.count - 1
+        
+        if indexPath.row == lastElement && !self.questionsViewModel.isLoading {
+            self.questionsViewModel.nextPage(completion: { (areNewQuestions) in
+                switch areNewQuestions {
+                case true:
+                    self.tableView.reloadData()
+                case false:
+                    break
+                }
+            })
+        }
+    }
+}
+
+extension QuestionsTabViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.questionsViewModel.questions.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "questionCell") as! QuestionCell
+        
+        cell.setupCell(question: self.questionsViewModel.questions[indexPath.row])
+        
+        return cell
+    }
+}
+

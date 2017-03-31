@@ -6,8 +6,6 @@
 //  Copyright © 2017 twof. All rights reserved.
 //
 
-import Foundation
-
 class QuestionsViewModel {
     var questions: [Question]! = []
     var isLoading = false
