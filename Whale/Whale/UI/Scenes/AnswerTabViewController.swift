@@ -9,6 +9,10 @@
 import UIKit
 
 class AnswerTabViewController: UIViewController {
+    
+    @IBOutlet weak var answersTable: UITableView!
+    
+    var answersViewModel: Answer
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,5 +44,7 @@ extension AnswerTabViewController: UITableViewDelegate {
 }
 
 extension AnswerTabViewController: UITableViewDataSource {
-    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        <#code#>
+    }
 }
