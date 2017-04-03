@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import AlamofireImage
 
 class AnswerCell: UITableViewCell {
 
-    @IBOutlet weak var videoThumbnailImageView: UIImageView!
+    @IBOutlet weak var videoThumbnailImageView: UIImageView! = UIImageView()
     @IBOutlet weak var fromUserLabel: UILabel!
   
     override func awakeFromNib() {
@@ -23,5 +24,13 @@ class AnswerCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
+    func setupCell(answer: AnswerViewModel) -> Self{
+        answer.getImage(completion: { (image) in
+            self.videoThumbnailImageView.image = image
+        })
+       
+        fromUserLabel.text = answer.questionSenderText
+        return self
+    }
 }

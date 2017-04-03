@@ -12,12 +12,22 @@ class AnswerTabViewController: UIViewController {
     
     @IBOutlet weak var answersTable: UITableView!
     
-    var answersViewModel: Answer
+    var answerListViewModel: AnswersListViewModel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        answersTable.delegate = self
+        answersTable.dataSource = self
 
-        // Do any additional setup after loading the view.
+        answerListViewModel = AnswersListViewModel(completion: { (areAnswers) in
+            switch areAnswers {
+            case true:
+                self.answersTable.reloadData()
+            case false:
+                break
+            }
+        })
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,11 +50,30 @@ class AnswerTabViewController: UIViewController {
 
 
 extension AnswerTabViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let lastElement = answerListViewModel.answers.count - 1
+        
+        if indexPath.row == lastElement && !self.answerListViewModel.isLoading {
+            self.answerListViewModel.nextPage(completion: { (areNewAnswers) in
+                switch areNewAnswers {
+                case true:
+                    self.answersTable.reloadData()
+                case false:
+                    break
+                }
+            })
+        }
+    }
 }
 
 extension AnswerTabViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        <#code#>
+        return answerListViewModel.answers.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "AnswerCell") as! AnswerCell
+        
+        return cell.setupCell(answer: answerListViewModel.answers[indexPath.row])
     }
 }

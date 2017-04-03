@@ -23,8 +23,9 @@ class QuestionCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setupCell(question: Question) {
+    func setupCell(question: Question) -> Self {
         self.question = question
         questionLabel.text = self.question?.content
+        return self
     }
 }

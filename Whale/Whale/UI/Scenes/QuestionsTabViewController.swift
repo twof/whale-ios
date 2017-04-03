@@ -59,8 +59,6 @@ extension QuestionsTabViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "questionCell") as! QuestionCell
         
-        cell.setupCell(question: self.questionsViewModel.questions[indexPath.row])
-        
-        return cell
+        return cell.setupCell(question: self.questionsViewModel.questions[indexPath.row])
     }
 }
