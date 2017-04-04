@@ -31,6 +31,7 @@ public enum Whale {
     }
     
     case GetUsers
+    case GetSession
     case GetAnswers(perPage: Int, pageNum: Int)
     case GetQuestions(perPage: Int, pageNum: Int)
     case GetComments(answerId: Int, perPage: Int, pageNum: Int)
@@ -50,6 +51,8 @@ extension Whale: Endpoint {
             return "api/v1/answers/\(answerId)/comments"
         case .GetUsers, .CreateUser:
             return "api/v1/users"
+        case .GetSession:
+            return "api/v1/sessions"
         case .GetQuestions, .CreateQuestion:
             return "api/v1/questions"
         case .GetLikes(let answerId):
@@ -66,6 +69,7 @@ extension Whale: Endpoint {
         case .GetAnswers,
              .GetComments,
              .GetUsers,
+             .GetSession,
              .GetQuestions,
              .GetLikes:
             return .get
@@ -92,6 +96,7 @@ public struct WhaleService: APIRequest, Gettable {
              .GetComments,
              .GetLikes,
              .GetQuestions,
+             .GetSession,
              .CreateAnswer,
              .CreateQuestion:
             return [.Authorization(KeychainSwift().get("authToken")! as String)]
@@ -130,7 +135,7 @@ public struct WhaleService: APIRequest, Gettable {
             return Like.self
         case .GetQuestions:
             return Question.self
-        case .GetUsers:
+        case .GetUsers, .GetSession:
             return User.self
         case .LoginUser:
             return User.self

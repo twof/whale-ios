@@ -7,13 +7,35 @@
 //
 
 import UIKit
+import KeychainSwift
 
 class ProfileTabViewController: UIViewController {
+    var user: UserViewModel!
+    @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var followingCountLabel: UILabel!
+    @IBOutlet weak var followersCountLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        let sessionService = WhaleService(endpoint: Whale.GetSession)
+            
+        sessionService.get { (result) in
+            switch result{
+            case .Failure(let error):
+                print(error)
+            case .Success(let user):
+                self.user = UserViewModel(user: user as! User)
+                
+                self.user.getImage(completion: { (profileImage) in
+                    self.profileImageView.image = profileImage
+                })
+                self.nameLabel.text = self.user.usernameText
+                self.followingCountLabel.text = self.user.followingCountText
+                self.followersCountLabel.text = self.user.followerCountText
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -21,6 +43,10 @@ class ProfileTabViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func logoutButtonPressed(_ sender: Any) {
+        KeychainSwift().delete("authToken")
+        performSegue(withIdentifier: "logout", sender: self)
+    }
 
     /*
     // MARK: - Navigation
