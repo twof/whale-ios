@@ -51,31 +51,3 @@ public class Answer: Mappable {
         }
     }
 }
-
-/*
-"video_url": "https://whale-bucket.s3.amazonaws.com/users/answers/question_27/videos/milo-fav-cat_medium.mov?v=63658047113",
-"thumbnail_url": "https://whale-bucket.s3.amazonaws.com/users/answers/question_27/thumbnails/milo-fav-cat_medium.png?v=63658047114",
-"question": {
-    "sender": {
-        "username": "Tobias",
-        "last_name": "Johnston",
-        "image_url": "https://whale-bucket.s3.amazonaws.com/users/avatars/brynn_johnston_billie.southall@info66.com/18_thumb.jpg?v=63657282706",
-        "id": 12,
-        "first_name": "Brynn",
-        "email": "billie.southall@info66.com"
-    },
-    "receiver": {
-        "username": "milo_hudson",
-        "last_name": "Hudson",
-        "image_url": "https://whale-bucket.s3.amazonaws.com/users/avatars/milo_hudson_milo@mail.com/milo_thumb.png?v=63658046296",
-        "id": 59,
-        "first_name": "Milo",
-        "email": "milo@mail.com"
-    },
-    "id": 27,
-    "content": "What is your favorite kind of cat?"
-},
-"likes_count": null,
-"id": 22,
-"comment_count": null
- */

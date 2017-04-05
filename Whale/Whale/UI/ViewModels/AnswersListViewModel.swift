@@ -41,6 +41,10 @@ class AnswerViewModel {
         }
     }
     
+    var videoURLText: String {
+        return self.answer.videoURL.absoluteString
+    }
+    
     fileprivate var nextAnswer: Answer? {
         return answer.nextAnswer
     }

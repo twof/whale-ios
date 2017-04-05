@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import AVKit
+import AVFoundation
 
 class AnswerTabViewController: UIViewController {
     
@@ -50,6 +52,15 @@ class AnswerTabViewController: UIViewController {
 
 
 extension AnswerTabViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let playerItem = AVPlayerItem(url: URL(string: self.answerListViewModel.answers[indexPath.row].videoURLText)!)
+        let avPlayer = AVPlayer(playerItem: playerItem)
+        
+        @IBAction func playPressed(_ sender: UIButton) {
+            avPlayer.play()
+        }
+    }
+    
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let lastElement = answerListViewModel.answers.count - 1
         
